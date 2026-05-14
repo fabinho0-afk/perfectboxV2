@@ -13,9 +13,9 @@ export interface AnalysisResult {
 }
 
 export async function analyzePackageIntegrity(imageBase64: string): Promise<AnalysisResult> {
-  const apiKey = process.env.GEMINI_API_KEY_VERCEL;
+  const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {
-    throw new Error("GEMINI_API_KEY_VERCEL is not defined. Please check your environment variables.");
+    throw new Error("GEMINI_API_KEY is not defined. Please check your environment variables.");
   }
   const ai = new GoogleGenAI({ apiKey });
   
