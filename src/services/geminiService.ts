@@ -35,7 +35,7 @@ export async function analyzePackageIntegrity(imageBase64: string): Promise<Anal
 
   try {
     const response = await ai.models.generateContent({
-      model: "gemini-3.1-flash-preview",
+      model: "gemini-3-flash-preview",
       contents: [
         {
           parts: [
@@ -54,7 +54,9 @@ export async function analyzePackageIntegrity(imageBase64: string): Promise<Anal
       }
     });
 
-    const result = JSON.parse(response.text || "{}");
+    const text = response.text;
+    if (!text) throw new Error("Resposta vazia da IA.");
+    const result = JSON.parse(text.trim());
     return result as AnalysisResult;
   } catch (error) {
     console.error("Gemini Analysis Error:", error);
