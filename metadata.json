@@ -1,0 +1,5 @@
+{
+  "name": "Perfect Box",
+  "description": "Sistema de análise de integridade de embalagens baseado em processamento digital de imagens e IA.",
+  "requestFramePermissions": ["camera"]
+}

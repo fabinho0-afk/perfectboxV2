@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-industrial-bg: #f4f4f7;
+  --color-industrial-panel: #ffffff;
+  --color-industrial-accent: #2563eb; /* Industrial Blue */
+  --color-industrial-border: #e2e8f0;
+  --color-industrial-text: #1e293b;
+  --color-industrial-muted: #64748b;
+  --color-industrial-warning: #d97706;
+  --color-industrial-danger: #dc2626;
+}
+
+@layer base {
+  body {
+    @apply bg-industrial-bg text-industrial-text font-sans antialiased;
+  }
+}
+
+.scanline {
+  width: 100%;
+  height: 2px;
+  background: rgba(37, 99, 235, 0.2);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  pointer-events: none;
+  animation: scan 3s linear infinite;
+}
+
+@keyframes scan {
+  0% { top: 0; }
+  100% { top: 100%; }
+}
+
+.grid-bg {
+  background-image: radial-gradient(circle, #cbd5e1 1px, transparent 1px);
+  background-size: 24px 24px;
+}
