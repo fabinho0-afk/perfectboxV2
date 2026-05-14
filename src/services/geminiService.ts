@@ -13,7 +13,11 @@ export interface AnalysisResult {
 }
 
 export async function analyzePackageIntegrity(imageBase64: string): Promise<AnalysisResult> {
-  const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+  const apiKey = process.env.GEMINI_API_KEY_VERCEL;
+  if (!apiKey) {
+    throw new Error("GEMINI_API_KEY_VERCEL is not defined. Please check your environment variables.");
+  }
+  const ai = new GoogleGenAI({ apiKey });
   
   const prompt = `
     Analise esta imagem de uma caixa de papelão para controle de qualidade industrial.
